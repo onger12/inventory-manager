@@ -1,14 +1,21 @@
-import { useEffect, useReducer } from "react"
-import { productsReducer } from "../reducers/ProductsReducer"
+import { useEffect, useReducer } from 'react';
+import { productsReducer } from '../reducers/productsReducer';
+
+import uniqid from 'uniqid';
+
+const init = () => {
+    return JSON.parse( localStorage.getItem('products') );
+}
 
 const initialProducts = JSON.parse(localStorage.getItem('producst'))
 
 export const useProducts = () => {
 
-    const [ products, dispatch ] = useReducer( productsReducer, initialProducts );
+    const [ products, dispatch ] = useReducer( productsReducer, [], init );
 
     useEffect( () => {
-        localStorage.setItem('products', products)
+        localStorage.setItem('products', JSON.stringify( products ))
+        console.log(products)
     }, [products] )
 
     const onCreateProduct = ( product ) => {
@@ -16,7 +23,7 @@ export const useProducts = () => {
             type: '[PRODUCT] add product',
             payload: {
                 ...product,
-                //TODO: ADD UNIQID HERE
+                id : uniqid()
             }
         }
         dispatch( action );
@@ -32,12 +39,10 @@ export const useProducts = () => {
         dispatch( action );
     }
 
-    const onDeleteProduct = ( product ) => {
+    const onDeleteProduct = ( id ) => {
         const action = {
-            type: '[PRODUCT] patch product',
-            payload: {
-                ...product,
-            }
+            type: '[PRODUCT] delete product',
+            payload: id
         }
         dispatch( action );
     }

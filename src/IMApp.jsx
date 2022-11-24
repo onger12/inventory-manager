@@ -1,5 +1,5 @@
 import { AppRouter } from "./AppRouter"
-import { ProductsProvider } from "./contexts/products/ProductsProvider"
+import { AppProvider } from "./contexts/products/AppProvider"
 import { Navbar } from "./ui/components/NavBar"
 
 
@@ -8,9 +8,9 @@ export const IMApp = () => {
     <>
       <Navbar />
       <div className="container">
-        <ProductsProvider>
+        <AppProvider>
           <AppRouter />
-        </ProductsProvider>
+        </AppProvider>
       </div>
     </>
   )

@@ -1,33 +1,28 @@
 import { useContext } from "react"
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { ProductForm } from "../components/ProductForm";
 import { AppContext } from "../contexts/products/appContext"
 
-export const CrearProducto = () => {
+export const EditarProducto = () => {
 
-    const { onCreateProduct } = useContext( AppContext );
+    const { onPatchProduct } = useContext( AppContext );
     const navigate = useNavigate();
+    const { id } = useParams();
+
+    const product = JSON.parse( localStorage.getItem('products') ).find( ( product ) => product.id === id)
 
     const onSubmitForm = ( e, formState ) => {
         e.preventDefault();
-        onCreateProduct( formState );
+        onPatchProduct( formState );
         navigate( "/inventario" );
     }
 
-    const initialValue = {
-        name : '',
-        description : '',
-        sale_value : '',
-        single_cost : '',
-        stock : '',
-        checkpoint : '',
-        codigo : '',
-    }
+    const initialValue = { ...product }
 
     return (
 
         <div className="container my-2">
-            <h1>Crear nuevo producto</h1>
+            <h1>Editar producto</h1>
             <hr />
             <ProductForm initialValue={ initialValue } onSubmitForm={ onSubmitForm } />
         </div>
