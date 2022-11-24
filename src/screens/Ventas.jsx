@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 
-export const Venta = () => {
+export const Ventas = () => {
     const [productos, setProductos] = useState([])
     const [productosEnVenta, setProductosEnVenta] = useState([])
     const [clientes, setClientes] = useState([])

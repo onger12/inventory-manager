@@ -1,127 +1,16 @@
-import { useEffect, useState } from "react"
+import { useContext, useEffect, useState } from "react"
+import { ProductsContext } from "../contexts/products/ProductsContext"
 
 export const Inventario = () => {
-    const [productos, setProductos] = useState([])
+
+    const { products } = useContext( ProductsContext );
+
     const [editando, setEditando] = useState(false)
     const [creando, setCreando] = useState(false)
     const [productoSeleccionado, setProductoSeleccionado] = useState('')
     const [productoNuevo, setProductoNuevo] = useState({})
 
-    useEffect(() => {
-        fetch("http://localhost:3001/productos").then(res => res.json())
-        .then(res => {
-            setProductos(res)
-        })
-        .catch(e => console.log(e))
-    }, [])
-
-    const eliminarProducto = producto => {
-
-    }
-
-    const editarProducto = producto => {
-        setEditando(true)
-        setCreando(false)
-        setProductoSeleccionado(producto)
-    }
-
-    const terminarEdicion = e => {
-        e.preventDefault()
-        var myHeaders = new Headers();
-        myHeaders.append("Content-Type", "application/json");
-
-        var raw = JSON.stringify(productoSeleccionado);
-
-        var requestOptions = {
-        method: 'PUT',
-        headers: myHeaders,
-        body: raw,
-        redirect: 'follow'
-        };
-
-        fetch("http://localhost:3001/producto", requestOptions)
-            .then(response => response.text())
-            .then(result => console.log(result))
-            .catch(error => console.log('error', error));
-
-        setEditando(false)
-    }
-
-    const enviarNuevoProducto = e => {
-        e.preventDefault()
-
-        console.log(productoNuevo)
-        var myHeaders = new Headers();
-        myHeaders.append("Content-Type", "application/json");
-
-        var raw = JSON.stringify(productoNuevo);
-
-        var requestOptions = {
-        method: 'POST',
-        headers: myHeaders,
-        body: raw,
-        redirect: 'follow'
-        };
-
-        fetch("http://localhost:3001/producto", requestOptions)
-        .then(response => response.text())
-        .then(result => console.log(result))
-        .catch(error => console.log('error', error));
-
-        setCreando(false)
-    }
-
-    const quitarSeleccionProducto = () => {
-        setProductoSeleccionado('')
-        setEditando(false)
-    }
-
-
-    const setNombreEditar = e => {
-        productoSeleccionado.nombre = e.target.value
-    }
-    const setDescripcionEditar = e => {
-        productoSeleccionado.descripcion = e.target.value
-    }
-    const setValorVentaEditar = e => {
-        productoSeleccionado.valor_venta = e.target.value
-    }
-    const setCostoUnitarioEditar = e => {
-        productoSeleccionado.costo_unitario  = e.target.value
-    }
-    const setExistenciaEditar = e => {
-        productoSeleccionado.existencia= e.target.value
-    }
-    const setPuntoReordenEditar = e => {
-        productoSeleccionado.punto_reorden = e.target.value
-    }
-
-    const setCodigoEditar = e => {
-        productoSeleccionado.codigo = e.target.value
-    }
-
-    const setNombreCrear = e => {
-        productoNuevo.nombre = e.target.value
-    }
-    const setDescripcionCrear = e => {
-        productoNuevo.descripcion = e.target.value
-    }
-    const setValorVentaCrear = e => {
-        productoNuevo.valor_venta = e.target.value
-    }
-    const setCostoUnitarioCrear = e => {
-        productoNuevo.costo_unitario = e.target.value
-    }
-    const setExistenciaCrear = e => {
-        productoNuevo.existencia = e.target.value
-    }
-    const setPuntoReordenCrear = e => {
-        productoNuevo.punto_reorden = e.target.value
-    }
-    const setCodigoCrear = e => {
-        productoNuevo.codigo = e.target.value
-    }
-
+    
 
     const header = ["Codigo", "Nombre", "Descripcion", "Precio", "Cantidad", "Acciones"]
 
