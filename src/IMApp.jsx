@@ -1,5 +1,5 @@
 import { AppRouter } from "./AppRouter"
-import { AppProvider } from "./contexts/products/AppProvider"
+import { AppProvider } from "./contexts"
 import { Navbar } from "./ui/components/NavBar"
 
 

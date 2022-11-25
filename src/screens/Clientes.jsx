@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react"
+import { Table } from "../components/Table"
 
 export const Clientes = () => {
     const [clientes, setClientes] = useState([])
@@ -267,24 +268,7 @@ export const Clientes = () => {
             {/* AQUI TERMINA LA COMPROBACION PARA MOSTRAR FORM PARA CREAR CLIENTE */}
 
             <h1>Clientes</h1>
-            <table className="table table-striped table-clientes">
-                <thead>
-                    <tr>{header.map((th, i) => <th key={i}>{th}</th> )}</tr>
-                </thead>
-                <tbody>
-                    {clientes.map(cliente => {
-                        return(
-                            <tr key={cliente.id_cliente}>
-                                <td>{cliente.nombre}</td>
-                                <td>{cliente.identificacion}</td>
-                                <td>{cliente.telefono}</td>
-                                <td>{cliente.direccion}</td>
-                                <td>{cliente.ciudad}</td>
-                            </tr>
-                        )
-                    })}
-                </tbody>
-            </table>
+            <Table payload={{}} />
         </div>
     )
 }

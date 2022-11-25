@@ -7,8 +7,6 @@ const init = () => {
     return JSON.parse( localStorage.getItem('products') );
 }
 
-const initialProducts = JSON.parse(localStorage.getItem('producst'))
-
 export const useProducts = () => {
 
     const [ products, dispatch ] = useReducer( productsReducer, [], init );

@@ -1,11 +1,12 @@
 import { useContext } from "react"
 import { useNavigate } from "react-router-dom";
-import { ProductForm } from "../components/ProductForm";
-import { AppContext } from "../contexts/products/appContext"
+import { ProductForm } from "../../components";
+import { AppContext } from "../../contexts"
 
 export const CrearProducto = () => {
 
-    const { onCreateProduct } = useContext( AppContext );
+    const { productsHookValue } = useContext( AppContext );
+    const { onCreateProduct } = productsHookValue;
     const navigate = useNavigate();
 
     const onSubmitForm = ( e, formState ) => {

@@ -1,11 +1,12 @@
 import { useContext } from "react"
 import { useNavigate, useParams } from "react-router-dom";
 import { ProductForm } from "../components/ProductForm";
-import { AppContext } from "../contexts/products/appContext"
+import { AppContext } from "../contexts"
 
 export const EditarProducto = () => {
 
-    const { onPatchProduct } = useContext( AppContext );
+    const { productsHookValue } = useContext( AppContext );
+    const { onPatchProduct } = productsHookValue;
     const navigate = useNavigate();
     const { id } = useParams();
 

@@ -1,6 +1,6 @@
 import { Navigate, Route, Routes } from "react-router-dom"
 import { Clientes, Inicio, Ventas, Inventario, Registros } from "./screens"
-import { CrearProducto } from "./screens/CrearProducto"
+import { CrearProducto, CrearCliente } from "./screens"
 import { EditarProducto } from "./screens/EditarProducto"
 
 

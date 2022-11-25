@@ -2,7 +2,13 @@
 import { Link } from 'react-router-dom';
 
 
-export const Table = ({ header, products, onDeleteProduct }) => {
+export const Table = ({ payload }) => {
+
+    const {
+        header, 
+        products, 
+        onDeleteProduct
+    } = payload;
     return (
         <table className="table table-striped">
             <thead>

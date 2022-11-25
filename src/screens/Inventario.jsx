@@ -5,7 +5,8 @@ import { AppContext } from '../contexts';
 
 export const Inventario = () => {
 
-    const { products, onDeleteProduct } = useContext( AppContext );    
+    const { productsHookValue } = useContext( AppContext );    
+    const { products, onDeleteProduct } = productsHookValue
 
     const header = ["Codigo", "Nombre", "Descripcion", "Precio", "Cantidad", "Acciones"]
 
@@ -18,7 +19,9 @@ export const Inventario = () => {
             <div className="text-end my-4">
                 <Link className="btn btn-primary" to="/crear-producto" >Nuevo</Link>
             </div>
-            <Table products={ products } header={ header } onDeleteProduct={ onDeleteProduct } />
+            <Table 
+                payload={{ products, header, onDeleteProduct }}
+            />
         </div>
     )
 }
