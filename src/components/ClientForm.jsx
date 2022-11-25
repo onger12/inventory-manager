@@ -1,16 +1,14 @@
 import React from 'react'
 import { useForm } from '../hooks/useForm';
 
-export const ProductForm = ({ initialValue, onSubmitForm, }) => {
+export const ClientForm = ({ initialValue, onSubmitForm, }) => {
 
     const { 
-        name, 
-        description, 
-        sale_value, 
-        single_cost, 
-        stock, 
-        checkpoint, 
-        codigo, 
+        name,
+        dni,
+        phone,
+        address,
+        city,
         onChangeInput,
         formState
     } = useForm( initialValue );
@@ -35,34 +33,18 @@ export const ProductForm = ({ initialValue, onSubmitForm, }) => {
             </div>
 
             <div className="input-group mb-3">
-                <input 
-                    className="form-control" 
-                    type="text" 
-                    placeholder="descripcion"
-                    name="description" 
-                    aria-describedby="basic-addon2" 
-                    required 
-                    onChange={ onChangeInput }
-                    value={ description }
-            />
-                <div className="input-group-append">
-                    <span className="input-group-text" id="basic-addon2">Descripcion</span>
-                </div>
-            </div>
-
-            <div className="input-group mb-3">
                 <div className="input-group-prepend">
-                    <span className="input-group-text" id="basic-addon1">Valor de venta</span>
+                    <span className="input-group-text" id="basic-addon1">Cedula</span>
                 </div>
                 <input 
                     className="form-control" 
                     type="number" 
-                    name="sale_value" 
+                    name="dni" 
                     aria-describedby="basic-addon1" 
-                    placeholder="Valor de venta"
+                    placeholder="cedula"
                     required 
                     onChange={ onChangeInput }
-                    value={ sale_value }
+                    value={ dni }
                 />
             </div>
 
@@ -70,64 +52,48 @@ export const ProductForm = ({ initialValue, onSubmitForm, }) => {
                 <input 
                     className="form-control"  
                     type="number" 
-                    name="single_cost" 
+                    name="phone" 
                     aria-describedby="basic-addon2" 
-                    placeholder="costo unitario"
+                    placeholder="telefono"
                     required 
                     onChange={ onChangeInput }
-                    value={ single_cost }
+                    value={ phone }
                 />
                 <div className="input-group-append">
-                    <span className="input-group-text" id="basic-addon2">Costo unitario</span>
+                    <span className="input-group-text" id="basic-addon2">Telefono</span>
                 </div>
             </div>
 
             <div className="input-group mb-3">
                 <div className="input-group-prepend">
-                    <span className="input-group-text" id="basic-addon1">Existencia</span>
+                    <span className="input-group-text" id="basic-addon1">Direccion</span>
                 </div>
                 <input 
                     className="form-control" 
-                    type="number" 
-                    name="stock" 
+                    type="text" 
+                    name="address" 
                     aria-describedby="basic-addon1" 
-                    placeholder="existencia"
+                    placeholder="direccion"
                     required 
                     onChange={ onChangeInput }
-                    value={ stock }
+                    value={ address }
                 />
             </div>
 
             <div className="input-group mb-3">
                 <input 
                     className="form-control" 
-                    type="number" 
-                    placeholder="punto de reorden"
-                    name="checkpoint" 
+                    type="text" 
+                    placeholder="ciudad"
+                    name="city" 
                     aria-describedby="basic-addon2" 
                     required 
                     onChange={ onChangeInput }
-                    value={ checkpoint }
+                    value={ city }
                 />
                 <div className="input-group-append">
-                    <span className="input-group-text" id="basic-addon2">Punto de reorden</span>
+                    <span className="input-group-text" id="basic-addon2">Ciudad</span>
                 </div>
-            </div>
-
-            <div className="input-group mb-3">
-                <div className="input-group-prepend">
-                    <span className="input-group-text" id="basic-addon1">Codigo</span>
-                </div>
-                <input 
-                    className="form-control" 
-                    type="number" 
-                    placeholder="codigo"
-                    name="codigo" 
-                    aria-describedby="basic-addon1"
-                    required 
-                    onChange={ onChangeInput }
-                    value={ codigo }
-                />
             </div>
 
             <button

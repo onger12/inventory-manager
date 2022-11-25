@@ -1,7 +1,18 @@
-import { Navigate, Route, Routes } from "react-router-dom"
-import { Clientes, Inicio, Ventas, Inventario, Registros } from "./screens"
-import { CrearProducto, CrearCliente } from "./screens"
-import { EditarProducto } from "./screens/EditarProducto"
+import { Navigate, Route, Routes } from 'react-router-dom';
+
+import { 
+    
+    Clientes, 
+    Inicio, 
+    Ventas, 
+    Inventario, 
+    Registros, 
+    CrearProducto, 
+    CrearCliente, 
+    EditarProducto, 
+    EditarCliente 
+
+} from './screens';
 
 
 export const AppRouter = () => {
@@ -15,6 +26,9 @@ export const AppRouter = () => {
 
             <Route path="crear-producto" element={ <CrearProducto /> } />
             <Route path="editar-producto/:id" element={ <EditarProducto /> } />
+
+            <Route path="crear-cliente" element={ <CrearCliente /> } />
+            <Route path="editar-cliente/:id" element={ <EditarCliente /> } />
 
 
             <Route path="/*" element={ <Navigate to="/" />} />

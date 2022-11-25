@@ -1,6 +1,7 @@
 import { useContext } from 'react';
 import { Link } from 'react-router-dom';
-import { Table } from '../components';
+
+import { InventoryTable } from '../components';
 import { AppContext } from '../contexts';
 
 export const Inventario = () => {
@@ -19,7 +20,7 @@ export const Inventario = () => {
             <div className="text-end my-4">
                 <Link className="btn btn-primary" to="/crear-producto" >Nuevo</Link>
             </div>
-            <Table 
+            <InventoryTable
                 payload={{ products, header, onDeleteProduct }}
             />
         </div>

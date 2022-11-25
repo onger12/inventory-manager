@@ -1,7 +1,8 @@
-import { useContext } from "react"
-import { useNavigate, useParams } from "react-router-dom";
-import { ProductForm } from "../components/ProductForm";
-import { AppContext } from "../contexts"
+import { useContext } from 'react';
+import { useNavigate, useParams } from 'react-router-dom';
+
+import { ProductForm } from '../../components';
+import { AppContext } from '../../contexts';
 
 export const EditarProducto = () => {
 
